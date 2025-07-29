@@ -11,8 +11,7 @@
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
-import * as fs from 'fs/promises';
-import * aimport {promises as fs} from 'fs';
+import {promises as fs} from 'fs';
 import * as path from 'path';
 
 const PestKnowledgeRetrievalInputSchema = z.object({

@@ -27,6 +27,7 @@ const AiConversationEngineOutputSchema = z.object({
   response: z.string().describe('The response from the AI.'),
   updatedSessionData: z
     .record(z.string(), z.any())
+    .optional()
     .describe(
       'The updated session data as a JSON object. This can be a flat key-value pair object.'
     ),

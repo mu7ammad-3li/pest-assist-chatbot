@@ -25,7 +25,7 @@ export type AiConversationEngineInput = z.infer<typeof AiConversationEngineInput
 
 const AiConversationEngineOutputSchema = z.object({
   response: z.string().describe('The response from the AI.'),
-  updatedSessionData: z.record(z.string(), z.any()).describe('The updated session data.'),
+  updatedSessionData: z.record(z.string(), z.union([z.string(), z.number(), z.boolean(), z.array(z.string())])).describe('The updated session data.'),
 });
 export type AiConversationEngineOutput = z.infer<typeof AiConversationEngineOutputSchema>;
 
@@ -63,7 +63,7 @@ Example updatedSessionData:
   "inquiredProducts": ["product1", "product2"]
 }
 
-Ensure the response is relevant to the pest control business and aligns with the defined business logic. Consider the user's inquiry, the current session state, and any available knowledge base information to provide the most helpful and informative response.`, // Corrected prompt to follow single quotes.
+Ensure the response is relevant to the pest control business and aligns with the defined business logic. Consider the user's inquiry, the current session state, and any available knowledge base information to provide the most helpful and informative response.`,
 });
 
 const aiConversationEngineFlow = ai.defineFlow(

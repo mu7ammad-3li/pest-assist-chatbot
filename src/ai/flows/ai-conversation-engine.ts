@@ -15,7 +15,7 @@ const AiConversationEngineInputSchema = z.object({
   message: z.string().describe('The message from the user.'),
   userId: z.string().describe('The ID of the user.'),
   platform: z.string().describe('The platform the user is using (e.g., whatsapp, messenger).'),
-  sessionData: z.record(z.any()).describe('Session data to maintain conversation context.'),
+  sessionData: z.record(z.string(), z.any()).describe('Session data to maintain conversation context.'),
   conversationHistory: z.array(z.object({
     role: z.enum(['user', 'assistant']),
     content: z.string(),
@@ -25,7 +25,7 @@ export type AiConversationEngineInput = z.infer<typeof AiConversationEngineInput
 
 const AiConversationEngineOutputSchema = z.object({
   response: z.string().describe('The response from the AI.'),
-  updatedSessionData: z.record(z.any()).describe('The updated session data.'),
+  updatedSessionData: z.record(z.string(), z.any()).describe('The updated session data.'),
 });
 export type AiConversationEngineOutput = z.infer<typeof AiConversationEngineOutputSchema>;
 

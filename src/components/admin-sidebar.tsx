@@ -34,14 +34,12 @@ export function AdminSidebar() {
         <SidebarMenu>
           {menuItems.map((item) => (
             <SidebarMenuItem key={item.href}>
-              <Link href={item.href} passHref>
                 <SidebarMenuButton asChild isActive={pathname === item.href}>
-                  <span>
+                  <Link href={item.href}>
                     <item.icon />
                     <span>{item.label}</span>
-                  </span>
+                  </Link>
                 </SidebarMenuButton>
-              </Link>
             </SidebarMenuItem>
           ))}
         </SidebarMenu>

@@ -25,7 +25,13 @@ export type AiConversationEngineInput = z.infer<typeof AiConversationEngineInput
 
 const AiConversationEngineOutputSchema = z.object({
   response: z.string().describe('The response from the AI.'),
-  updatedSessionData: z.record(z.string(), z.union([z.string(), z.number(), z.boolean(), z.array(z.string())])).describe('The updated session data.'),
+  updatedSessionData: z
+    .string()
+    .json()
+    .describe(
+      'The updated session data as a JSON string. This can be a flat key-value pair object.'
+    )
+    .transform(value => value as Record<string, any>),
 });
 export type AiConversationEngineOutput = z.infer<typeof AiConversationEngineOutputSchema>;
 
